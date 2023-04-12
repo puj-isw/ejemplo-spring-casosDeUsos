@@ -1,0 +1,21 @@
+# Gitpod Configuration
+# ver: https://www.gitpod.io/docs/introduction/learn-gitpod/gitpod-yaml
+
+# Uso de imagen de Docker específica
+# ver: https://hub.docker.com/u/gitpod
+image: gitpod/workspace-java-17
+
+# Comandos a ejecutar al inicio del proyecto
+tasks:
+  - name: Instala Spring Boot 
+    command: sdk install springboot 
+
+  - name: Compila proyecto sin ejecutar pruebas
+    before: sdk install java 17.0.6.fx-zulu
+    init: ./mvnw package -DskipTests 
+
+# Extensiones
+vscode:
+  extensions:
+    - pivotal.vscode-spring-boot
+    - vscjava.vscode-java-pack
