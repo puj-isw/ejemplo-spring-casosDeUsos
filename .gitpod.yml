@@ -11,7 +11,9 @@ tasks:
     command: sdk install springboot 
 
   - name: Compila proyecto sin ejecutar pruebas
-    before: sdk default java 17.0.6.fx-zulu
+    before: |
+      sdk install java 17.0.7.fx-zulu
+      sdk default java 17.0.7.fx-zulu
     init: ./mvnw package -DskipTests 
 
 # Extensiones
