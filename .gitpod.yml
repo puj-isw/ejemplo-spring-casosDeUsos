@@ -12,7 +12,6 @@ tasks:
 
   - name: Compila proyecto sin ejecutar pruebas
     before: |
-      sdk install java 17.0.7.fx-zulu
       sdk default java 17.0.7.fx-zulu
     init: ./mvnw package -DskipTests 
 
