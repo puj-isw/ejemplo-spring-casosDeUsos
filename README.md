@@ -71,3 +71,54 @@ El siguiente diagrama representa los casos de uso
     2. Sistema termina
 
 
+## Implementación en Spring
+
+Algunas clases de interés
+
+En `src/main/java`
+
+| Clase                                              | Descripción                 |
+|----------------------------------------------------|-----------------------------|
+| com.ingesoft.bicicletas.domain.Usuario             | Entidad Usuario             |
+| com.ingesoft.bicicletas.domain.Bicicleta           | Entidad Bicicleta           |
+| com.ingesoft.bicicletas.data.RepositorioUsuarios   | Repositorio de Usuarios     |
+| com.ingesoft.bicicletas.data.RepositorioBicicletas | Repositorio de Bicicletas   |
+| com.ingesoft.bicicletas.logic.CasosDeUsoUsuarios   | Casos de Uso de Usuarios    | 
+| com.ingesoft.bicicletas.logic.ExcepcionUsuarios    | Excepción de Usuarios       |
+| com.ingesoft.bicicletas.logic.CasosDeUsoBicicletas | Casos de Uso de Bicicletas  |
+| com.ingesoft.bicicletas.logic.ExcepcionBicicletas  | Excepción de Bicicletas     |
+
+en `src/test/java`
+
+
+| Clase                                                   | Descripción                            |
+|---------------------------------------------------------|----------------------------------------|
+| com.ingesoft.bicicletas.logic.CasosDeUsoUsuariosTests   | Pruebas de Casos de Uso de Usuarios    | 
+
+
+
+## Ejecutando el ejemplo
+
+1. Ubicarse en el directorio del proyecto
+
+    ```
+    cd bicicletas
+    ```
+
+2. Iniciar el servidor de bases de datos
+
+    ```
+    docker compose up -d
+    ```
+
+3. Compilar la aplicación
+
+    ```
+    mvn package -DskipTests
+    ```
+
+4. Ejecutar las pruebas
+
+    ```
+    mvn test
+    ```
