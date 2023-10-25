@@ -26,3 +26,6 @@ jobs:
         
     - name: Compila 
       run: cd bicicletas; mvn -B package --file pom.xml -DskipTests
+
+    - name: Prueba
+      run: cd bicicletas; mvn test
