@@ -27,5 +27,11 @@ jobs:
     - name: Compila 
       run: cd bicicletas; mvn -B package --file pom.xml -DskipTests
 
+    - name: Docker Compose Run Action
+      uses: adrielcodeco/docker-compose-run-action@v1
+      with:
+        compose-file: ./bicicletas/docker-compose.yml
+        compose-flags: -d
+
     - name: Prueba
       run: cd bicicletas; mvn test
