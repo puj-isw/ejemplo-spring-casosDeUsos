@@ -1,0 +1,28 @@
+# name -- nombre que aparece en el listado de Actions 
+name: Compilar y Probar con Maven
+
+# on -- eventos que disparan (que inician) el flujo de tareas
+on:
+  workflow_dispatch:
+
+# jobs -- tareas (conjuntos de pasos)
+jobs:
+
+  # nombre de la tarea
+  compilar:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    - name: Descarga el código fuente
+      uses: actions/checkout@v3
+      
+    - name: Configura JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+        
+    - name: Compila 
+      run: cd bicicletas; mvn -B package --file pom.xml -DskipTests
