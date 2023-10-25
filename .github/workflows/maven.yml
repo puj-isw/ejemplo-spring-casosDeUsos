@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    
     - name: Descarga el código fuente
       uses: actions/checkout@v3
       
@@ -27,11 +26,23 @@ jobs:
     - name: Compila 
       run: cd bicicletas; mvn -B package --file pom.xml -DskipTests
 
-    - name: Docker Compose Run Action
-      uses: adrielcodeco/docker-compose-run-action@v1
+  # otra tarea
+  probar:    
+    runs-on: ubuntu-latest
+    needs: compilar
+    steps:
+    - name: Descarga el código fuente
+      uses: actions/checkout@v3
+      
+    - name: Configura JDK 17
+      uses: actions/setup-java@v3
       with:
-        compose-file: ./bicicletas/docker-compose.yml
-        compose-flags: -d
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+        
+    - name: Compila 
+      run: cd bicicletas; mvn -B package --file pom.xml -DskipTests
 
     - name: Prueba
       run: cd bicicletas; mvn test
